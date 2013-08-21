@@ -15,3 +15,11 @@ Route::get('/', function()
 {
 	return View::make('hello');
 });
+
+Route::get('contact/view/{id}', function($id)
+{
+    $contact = new Contact();
+    $contact->load($id);
+    $contactData = $contact->getData();
+    return View::make('contact')->with('contact',$contactData);
+});
